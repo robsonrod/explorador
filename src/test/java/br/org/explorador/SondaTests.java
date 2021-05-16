@@ -12,4 +12,11 @@ public class SondaTests {
 		sonda.mover("R");
 		Assertions.assertEquals("R", sonda.getDirecao());
 	}
+
+	@Test
+	public void testSondaNoPontoInicialVirarEsquerda() {
+		Sonda sonda = new Sonda(0,0,"N");
+		sonda.mover("L");
+		Assertions.assertEquals("L", sonda.getDirecao());
+	}
 }
