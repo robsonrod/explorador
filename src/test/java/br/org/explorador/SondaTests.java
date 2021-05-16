@@ -3,7 +3,6 @@ package br.org.explorador;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-
 public class SondaTests {
 
 	@Test
@@ -18,5 +17,12 @@ public class SondaTests {
 		Sonda sonda = new Sonda(0,0,"N");
 		sonda.mover("L");
 		Assertions.assertEquals("L", sonda.getDirecao());
+	}
+
+	@Test
+	public void testSondaNoPontoInicialInformandoPosicaoErrada() {
+		Sonda sonda = new Sonda(0,0,"N");
+		Exception exception = Assertions.assertThrows(IllegalArgumentException.class, () -> sonda.mover("D"));
+		Assertions.assertEquals("Direcao invalida", exception.getMessage());
 	}
 }

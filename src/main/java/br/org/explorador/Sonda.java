@@ -25,6 +25,10 @@ public class Sonda {
 	}
 
 	public void mover(String novaDirecao) {
+		boolean direcoesValidas = novaDirecao.equalsIgnoreCase("L") || novaDirecao.equalsIgnoreCase("R");
+		if (!direcoesValidas) {
+			throw new IllegalArgumentException("Direcao invalida");
+		}
 		this.direcao = novaDirecao;
 	}
 }
