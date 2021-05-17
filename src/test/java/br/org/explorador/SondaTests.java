@@ -20,9 +20,10 @@ public class SondaTests {
 	}
 
 	@Test
-	public void testSondaNoPontoInicialInformandoPosicaoErrada() {
+	public void testSondaNoPontoInicialInformandoDirecaoErrada() {
 		Sonda sonda = new Sonda(new Coordenada(0,0),"N");
 		Exception exception = Assertions.assertThrows(IllegalArgumentException.class, () -> sonda.mover("D"));
 		Assertions.assertEquals("Direcao invalida", exception.getMessage());
 	}
+
 }
