@@ -2,11 +2,13 @@ package br.org.explorador;
 
 public class Sonda {
 
-    private Posicao posicao;
+    private Posicao posicaoInicial;
+    private Posicao posicaoCorrente;
     private final Planalto planalto;
 
     public Sonda(Posicao posicao, Planalto planalto) {
-        this.posicao = posicao;
+        this.posicaoInicial = posicao;
+        this.posicaoCorrente = posicao;
         this.planalto = planalto;
     }
 
@@ -18,18 +20,20 @@ public class Sonda {
             throw new IllegalArgumentException("Direcao invalida");
         }
 
-        this.posicao.novaDirecao(direcaoDoGiro);
+        this.posicaoCorrente.novaDirecao(direcaoDoGiro);
     }
 
     public Posicao getPosicao() {
-        return posicao;
+        return posicaoCorrente;
     }
 
     public void mover() {
-        if (this.posicao.getCoordenadaY() >= this.planalto.getAltura()) {
+        if (this.posicaoCorrente.getCoordenadaY() >= this.planalto.getAltura()) {
+            this.posicaoCorrente = this.posicaoInicial;
+
             throw new IllegalStateException("Sonda em estado invalido. Tentativa de acessar um local inacessivel.");
         }
 
-        this.posicao = new Posicao(this.posicao.getCoordenadaX(), posicao.getCoordenadaY() + 1, this.posicao.getDirecao());
+        this.posicaoCorrente = new Posicao(this.posicaoCorrente.getCoordenadaX(), posicaoCorrente.getCoordenadaY() + 1, this.posicaoCorrente.getDirecao());
     }
 }
