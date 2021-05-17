@@ -5,38 +5,60 @@ import org.junit.jupiter.api.Test;
 
 public class SondaTests {
 
-	@Test
-	public void testSondaNoPontoInicialGirarDireita() {
-		Sonda sonda = new Sonda(new Coordenada(0,0), "N");
-		sonda.girar("R");
-		Assertions.assertEquals("R", sonda.getDirecao());
-	}
+    @Test
+    public void testSondaNoPontoInicialGirarDireita() {
+        Sonda sonda = new Sonda(new Coordenada(0, 0), "N", new Planalto(2, 2));
+        sonda.girar("R");
+        Assertions.assertEquals("R", sonda.getDirecao());
+    }
 
-	@Test
-	public void testSondaNoPontoInicialGirarEsquerda() {
-		Sonda sonda = new Sonda(new Coordenada(0,0),"N");
-		sonda.girar("L");
-		Assertions.assertEquals("L", sonda.getDirecao());
-	}
+    @Test
+    public void testSondaNoPontoInicialGirarEsquerda() {
+        Sonda sonda = new Sonda(new Coordenada(0, 0), "N", new Planalto(2, 2));
+        sonda.girar("L");
+        Assertions.assertEquals("L", sonda.getDirecao());
+    }
 
-	@Test
-	public void testSondaNoPontoInicialInformandoDirecaoGiroErrada() {
-		Sonda sonda = new Sonda(new Coordenada(0,0),"N");
-		Exception exception = Assertions.assertThrows(IllegalArgumentException.class, () -> sonda.girar("D"));
-		Assertions.assertEquals("Direcao invalida", exception.getMessage());
-	}
+    @Test
+    public void testSondaNoPontoInicialInformandoDirecaoGiroErrada() {
+        Sonda sonda = new Sonda(new Coordenada(0, 0), "N", new Planalto(2, 2));
+        Exception exception = Assertions.assertThrows(IllegalArgumentException.class, () -> sonda.girar("D"));
+        Assertions.assertEquals("Direcao invalida", exception.getMessage());
+    }
 
-	@Test
-	public void testSondaNoPontoInicialMovendoUmaVezFrenteSemAlterarDirecao() {
-		Sonda sonda = new Sonda(new Coordenada(0,0),"N");
-		sonda.mover();
-		Assertions.assertEquals("N", sonda.getDirecao());
+    @Test
+    public void testSondaNoPontoInicialMovendoUmaVezFrenteSemAlterarDirecao() {
+        Sonda sonda = new Sonda(new Coordenada(0, 0), "N", new Planalto(2, 2));
+        sonda.mover();
+        Assertions.assertEquals("N", sonda.getDirecao());
 
-		int posicaoEsperadaParaX = 0;
-		int posicaoEsperadaParaY = 1;
+        int posicaoEsperadaParaX = 0;
+        int posicaoEsperadaParaY = 1;
 
-		Assertions.assertEquals(posicaoEsperadaParaX, sonda.getCoordenada().getX());
-		Assertions.assertEquals(posicaoEsperadaParaY, sonda.getCoordenada().getY());
-	}
+        Assertions.assertEquals(posicaoEsperadaParaX, sonda.getPosicao().getX());
+        Assertions.assertEquals(posicaoEsperadaParaY, sonda.getPosicao().getY());
+    }
 
+    @Test
+    public void testSondaNoPontoInicialMovendoDuasVezesFrenteSemAlterarDirecao() {
+        Sonda sonda = new Sonda(new Coordenada(0, 0), "N", new Planalto(2, 2));
+        sonda.mover();
+        sonda.mover();
+        Assertions.assertEquals("N", sonda.getDirecao());
+
+        int posicaoEsperadaParaX = 0;
+        int posicaoEsperadaParaY = 2;
+
+        Assertions.assertEquals(posicaoEsperadaParaX, sonda.getPosicao().getX());
+        Assertions.assertEquals(posicaoEsperadaParaY, sonda.getPosicao().getY());
+    }
+
+    @Test
+    public void testSondaNoPontoInicialMovendoFrenteSaindoAreaCobertura() {
+        Sonda sonda = new Sonda(new Coordenada(0, 0), "N", new Planalto(2, 2));
+        sonda.mover();
+        sonda.mover();
+        Exception exception = Assertions.assertThrows(IllegalStateException.class, sonda::mover);
+        Assertions.assertEquals("Sonda em estado invalido. Tentativa de acessar um local inacessivel.", exception.getMessage());
+    }
 }

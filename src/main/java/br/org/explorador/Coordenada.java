@@ -2,10 +2,10 @@ package br.org.explorador;
 
 public class Coordenada {
 
-    private int x;
-    private int y;
+    private final int x;
+    private final int y;
 
-    public Coordenada(int x , int y) {
+    public Coordenada(int x, int y) {
         this.x = x;
         this.y = y;
     }
