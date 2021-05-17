@@ -2,24 +2,14 @@ package br.org.explorador;
 
 public class Sonda {
 
-	private int posicaoX;
-	private int posicaoY;
+	private Coordenada coordenada;
 	private String direcao;
 
-	public Sonda(int posicaoX, int posicaoY, String direcao) {
-		this.posicaoX = posicaoX;
-		this.posicaoY = posicaoY;
+	public Sonda(Coordenada coordenada, String direcao) {
+		this.coordenada = coordenada;
 		this.direcao = direcao;
 	}
 
-	public int getPosicaoX() {
-		return posicaoX;
-	}
-
-	public int getPosicaoY() {
-		return posicaoY;
-	}
-	
 	public String getDirecao() {
 		return direcao;
 	}
