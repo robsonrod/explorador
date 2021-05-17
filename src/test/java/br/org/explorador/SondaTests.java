@@ -54,11 +54,13 @@ public class SondaTests {
     }
 
     @Test
-    public void testSondaNoPontoInicialMovendoFrenteSaindoAreaCobertura() {
+    public void testSondaNoPontoInicialMovendoFrenteSaindoAreaCoberturaERetornandoAoPontoInicial() {
         Sonda sonda = new Sonda(new Posicao(0, 0, "N"), new Planalto(2, 2));
         sonda.mover();
         sonda.mover();
         Exception exception = Assertions.assertThrows(IllegalStateException.class, sonda::mover);
         Assertions.assertEquals("Sonda em estado invalido. Tentativa de acessar um local inacessivel.", exception.getMessage());
+        Assertions.assertEquals(0, sonda.getPosicao().getCoordenadaX());
+        Assertions.assertEquals(0, sonda.getPosicao().getCoordenadaY());
     }
 }
