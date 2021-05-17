@@ -3,17 +3,11 @@ package br.org.explorador;
 public class Sonda {
 
     private Posicao posicao;
-    private String direcao;
     private final Planalto planalto;
 
-    public Sonda(Posicao posicao, String direcao, Planalto planalto) {
+    public Sonda(Posicao posicao, Planalto planalto) {
         this.posicao = posicao;
-        this.direcao = direcao;
         this.planalto = planalto;
-    }
-
-    public String getDirecao() {
-        return direcao;
     }
 
     public void girar(String direcaoDoGiro) {
@@ -24,7 +18,7 @@ public class Sonda {
             throw new IllegalArgumentException("Direcao invalida");
         }
 
-        this.direcao = direcaoDoGiro;
+        this.posicao.novaDirecao(direcaoDoGiro);
     }
 
     public Posicao getPosicao() {
@@ -36,6 +30,6 @@ public class Sonda {
             throw new IllegalStateException("Sonda em estado invalido. Tentativa de acessar um local inacessivel.");
         }
 
-        this.posicao = new Posicao(this.posicao.getCoordenadaX(), posicao.getCoordenadaY() + 1);
+        this.posicao = new Posicao(this.posicao.getCoordenadaX(), posicao.getCoordenadaY() + 1, this.posicao.getDirecao());
     }
 }
