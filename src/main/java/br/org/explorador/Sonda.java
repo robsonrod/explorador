@@ -14,11 +14,22 @@ public class Sonda {
 		return direcao;
 	}
 
-	public void mover(String novaDirecao) {
-		boolean direcoesValidas = novaDirecao.equalsIgnoreCase("L") || novaDirecao.equalsIgnoreCase("R");
+	public Coordenada getCoordenada() {
+		return coordenada;
+	}
+
+	public void girar(String direcaoDoGiro) {
+		boolean direcoesValidas = direcaoDoGiro.equalsIgnoreCase("L") ||
+				direcaoDoGiro.equalsIgnoreCase("R");
+
 		if (!direcoesValidas) {
 			throw new IllegalArgumentException("Direcao invalida");
 		}
-		this.direcao = novaDirecao;
+
+		this.direcao = direcaoDoGiro;
+	}
+
+	public void mover() {
+		this.coordenada = new Coordenada(this.coordenada.getX(), coordenada.getY() + 1);
 	}
 }
