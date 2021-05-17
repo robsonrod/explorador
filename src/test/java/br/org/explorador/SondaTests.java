@@ -7,30 +7,30 @@ public class SondaTests {
 
     @Test
     public void testSondaNoPontoInicialGirarDireita() {
-        Sonda sonda = new Sonda(new Posicao(0, 0, "N"), new Planalto(2, 2));
+        Sonda sonda = new Sonda(new Posicao(0, 0, PontoCardeal.N), new Planalto(2, 2));
         sonda.girar("R");
-        Assertions.assertEquals("R", sonda.getPosicao().getDirecao());
+        Assertions.assertEquals(PontoCardeal.E, sonda.getPosicao().getDirecao());
     }
 
     @Test
     public void testSondaNoPontoInicialGirarEsquerda() {
-        Sonda sonda = new Sonda(new Posicao(0, 0, "N"), new Planalto(2, 2));
+        Sonda sonda = new Sonda(new Posicao(0, 0, PontoCardeal.N), new Planalto(2, 2));
         sonda.girar("L");
-        Assertions.assertEquals("L", sonda.getPosicao().getDirecao());
+        Assertions.assertEquals(PontoCardeal.W, sonda.getPosicao().getDirecao());
     }
 
     @Test
     public void testSondaNoPontoInicialInformandoDirecaoGiroErrada() {
-        Sonda sonda = new Sonda(new Posicao(0, 0, "N"), new Planalto(2, 2));
+        Sonda sonda = new Sonda(new Posicao(0, 0, PontoCardeal.N), new Planalto(2, 2));
         Exception exception = Assertions.assertThrows(IllegalArgumentException.class, () -> sonda.girar("D"));
         Assertions.assertEquals("Direcao invalida, somente L e R sao aceitos como direcao.", exception.getMessage());
     }
 
     @Test
     public void testSondaNoPontoInicialMovendoUmaVezFrenteSemAlterarDirecao() {
-        Sonda sonda = new Sonda(new Posicao(0, 0, "N"), new Planalto(2, 2));
+        Sonda sonda = new Sonda(new Posicao(0, 0, PontoCardeal.N), new Planalto(2, 2));
         sonda.mover();
-        Assertions.assertEquals("N", sonda.getPosicao().getDirecao());
+        Assertions.assertEquals(PontoCardeal.N, sonda.getPosicao().getDirecao());
 
         int posicaoEsperadaParaX = 0;
         int posicaoEsperadaParaY = 1;
@@ -41,10 +41,10 @@ public class SondaTests {
 
     @Test
     public void testSondaNoPontoInicialMovendoDuasVezesFrenteSemAlterarDirecao() {
-        Sonda sonda = new Sonda(new Posicao(0, 0, "N"), new Planalto(2, 2));
+        Sonda sonda = new Sonda(new Posicao(0, 0, PontoCardeal.N), new Planalto(2, 2));
         sonda.mover();
         sonda.mover();
-        Assertions.assertEquals("N", sonda.getPosicao().getDirecao());
+        Assertions.assertEquals(PontoCardeal.N, sonda.getPosicao().getDirecao());
 
         int posicaoEsperadaParaX = 0;
         int posicaoEsperadaParaY = 2;
@@ -55,7 +55,7 @@ public class SondaTests {
 
     @Test
     public void testSondaNoPontoInicialMovendoFrenteSaindoAreaCoberturaERetornandoAoPontoInicial() {
-        Sonda sonda = new Sonda(new Posicao(0, 0, "N"), new Planalto(2, 2));
+        Sonda sonda = new Sonda(new Posicao(0, 0, PontoCardeal.N), new Planalto(2, 2));
         sonda.mover();
         sonda.mover();
         Exception exception = Assertions.assertThrows(IllegalStateException.class, sonda::mover);

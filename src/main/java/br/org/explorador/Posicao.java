@@ -4,12 +4,12 @@ public class Posicao {
 
     private final int coordenadaX;
     private final int coordenadaY;
-    private String direcao;
+    private PontoCardeal pontoCardeal;
 
-    public Posicao(int coordenadaX, int coordenadaY, String direcao) {
+    public Posicao(int coordenadaX, int coordenadaY, PontoCardeal pontoCardeal) {
         this.coordenadaX = coordenadaX;
         this.coordenadaY = coordenadaY;
-        this.direcao = direcao;
+        this.pontoCardeal = pontoCardeal;
     }
 
     public int getCoordenadaX() {
@@ -20,11 +20,15 @@ public class Posicao {
         return coordenadaY;
     }
 
-    public String getDirecao() {
-        return direcao;
+    public PontoCardeal getDirecao() {
+        return pontoCardeal;
     }
 
     public void novaDirecao(String direcaoDoGiro) {
-        this.direcao = direcaoDoGiro;
+        if (direcaoDoGiro.equalsIgnoreCase("R")) {
+            this.pontoCardeal = this.pontoCardeal.virarDireita();
+            return;
+        }
+        this.pontoCardeal = this.pontoCardeal.virarEsquerda();
     }
 }

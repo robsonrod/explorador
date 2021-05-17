@@ -2,9 +2,9 @@ package br.org.explorador;
 
 public class Sonda {
 
-    private Posicao posicaoInicial;
-    private Posicao posicaoCorrente;
     private final Planalto planalto;
+    private final Posicao posicaoInicial;
+    private Posicao posicaoCorrente;
 
     public Sonda(Posicao posicao, Planalto planalto) {
         this.posicaoInicial = posicao;
