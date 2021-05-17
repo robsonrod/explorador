@@ -17,7 +17,7 @@ public class Sonda {
                 direcaoDoGiro.equalsIgnoreCase("R");
 
         if (!direcoesValidas) {
-            throw new IllegalArgumentException("Direcao invalida");
+            throw new IllegalArgumentException("Direcao invalida, somente L e R sao aceitos como direcao.");
         }
 
         this.posicaoCorrente.novaDirecao(direcaoDoGiro);

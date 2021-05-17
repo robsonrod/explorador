@@ -23,7 +23,7 @@ public class SondaTests {
     public void testSondaNoPontoInicialInformandoDirecaoGiroErrada() {
         Sonda sonda = new Sonda(new Posicao(0, 0, "N"), new Planalto(2, 2));
         Exception exception = Assertions.assertThrows(IllegalArgumentException.class, () -> sonda.girar("D"));
-        Assertions.assertEquals("Direcao invalida", exception.getMessage());
+        Assertions.assertEquals("Direcao invalida, somente L e R sao aceitos como direcao.", exception.getMessage());
     }
 
     @Test
