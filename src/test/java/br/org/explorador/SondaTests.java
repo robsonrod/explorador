@@ -27,7 +27,7 @@ public class SondaTests {
     }
 
     @Test
-    public void testSondaNoPontoInicialMovendoUmaVezFrenteSemAlterarDirecao() {
+    public void testSondaNoPontoInicialDirecaoNorteMovendoUmaVezFrenteSemAlterarDirecao() {
         Sonda sonda = new Sonda(new Posicao(0, 0, PontoCardeal.N), new Planalto(2, 2));
         sonda.mover();
         Assertions.assertEquals(PontoCardeal.N, sonda.getPosicao().getDirecao());
@@ -40,7 +40,7 @@ public class SondaTests {
     }
 
     @Test
-    public void testSondaNoPontoInicialMovendoDuasVezesFrenteSemAlterarDirecao() {
+    public void testSondaNoPontoInicialDirecaoNorteMovendoDuasVezesFrenteSemAlterarDirecao() {
         Sonda sonda = new Sonda(new Posicao(0, 0, PontoCardeal.N), new Planalto(2, 2));
         sonda.mover();
         sonda.mover();
@@ -54,7 +54,7 @@ public class SondaTests {
     }
 
     @Test
-    public void testSondaNoPontoInicialMovendoFrenteSaindoAreaCoberturaERetornandoAoPontoInicial() {
+    public void testSondaNoPontoInicialDirecaoNorteMovendoFrenteSaindoAreaCoberturaERetornandoAoPontoInicial() {
         Sonda sonda = new Sonda(new Posicao(0, 0, PontoCardeal.N), new Planalto(2, 2));
         sonda.mover();
         sonda.mover();
@@ -62,5 +62,32 @@ public class SondaTests {
         Assertions.assertEquals("Sonda em estado invalido. Tentativa de acessar um local inacessivel.", exception.getMessage());
         Assertions.assertEquals(0, sonda.getPosicao().getCoordenadaX());
         Assertions.assertEquals(0, sonda.getPosicao().getCoordenadaY());
+    }
+
+    @Test
+    public void testSondaNoPontoInicialDirecaoSulMovendoUmaVezFrenteSemAlterarDirecao() {
+        Sonda sonda = new Sonda(new Posicao(2, 2, PontoCardeal.S), new Planalto(2, 2));
+        sonda.mover();
+        Assertions.assertEquals(PontoCardeal.S, sonda.getPosicao().getDirecao());
+
+        int posicaoEsperadaParaX = 2;
+        int posicaoEsperadaParaY = 1;
+
+        Assertions.assertEquals(posicaoEsperadaParaX, sonda.getPosicao().getCoordenadaX());
+        Assertions.assertEquals(posicaoEsperadaParaY, sonda.getPosicao().getCoordenadaY());
+    }
+
+    @Test
+    public void testSondaNoPontoInicialDirecaoSulMovendoDuasVezesFrenteSemAlterarDirecao() {
+        Sonda sonda = new Sonda(new Posicao(2, 2, PontoCardeal.S), new Planalto(2, 2));
+        sonda.mover();
+        sonda.mover();
+        Assertions.assertEquals(PontoCardeal.S, sonda.getPosicao().getDirecao());
+
+        int posicaoEsperadaParaX = 2;
+        int posicaoEsperadaParaY = 0;
+
+        Assertions.assertEquals(posicaoEsperadaParaX, sonda.getPosicao().getCoordenadaX());
+        Assertions.assertEquals(posicaoEsperadaParaY, sonda.getPosicao().getCoordenadaY());
     }
 }
