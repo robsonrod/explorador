@@ -1,5 +1,8 @@
 package br.org.explorador;
 
+import java.math.BigDecimal;
+import java.math.BigInteger;
+
 public class Sonda {
 
     private final Planalto planalto;
@@ -25,42 +28,29 @@ public class Sonda {
     public void mover() {
 
         switch (posicaoCorrente.getDirecao()) {
-            case N: {
-                if (this.posicaoCorrente.getCoordenadaY() >= this.planalto.getAltura()) {
-                    this.posicaoCorrente = this.posicaoInicial;
-                    throw new IllegalStateException("Sonda em estado invalido. Tentativa de acessar um local inacessivel.");
-                }
+            case N:
+                validaSondaChegouLimiteAreaExploracao(this.posicaoCorrente.getCoordenadaY() >= this.planalto.getAltura());
                 this.posicaoCorrente.moverDirecaoNorte();
-            }
-            break;
-
-            case S: {
-
-                if (this.posicaoCorrente.getCoordenadaY() <= 0) {
-                    this.posicaoCorrente = this.posicaoInicial;
-                    throw new IllegalStateException("Sonda em estado invalido. Tentativa de acessar um local inacessivel.");
-                }
+                break;
+            case S:
+                validaSondaChegouLimiteAreaExploracao(this.posicaoCorrente.getCoordenadaY() <= 0);
                 this.posicaoCorrente.moverDirecaoSul();
-            }
-            break;
-
-            case E: {
-                if (this.posicaoCorrente.getCoordenadaX() >= this.planalto.getLargura()) {
-                    this.posicaoCorrente = this.posicaoInicial;
-                    throw new IllegalStateException("Sonda em estado invalido. Tentativa de acessar um local inacessivel.");
-                }
+                break;
+            case E:
+                validaSondaChegouLimiteAreaExploracao(this.posicaoCorrente.getCoordenadaX() >= this.planalto.getLargura());
                 this.posicaoCorrente.moverDirecaoLeste();
-            }
-            break;
-
-            case W: {
-                if (this.posicaoCorrente.getCoordenadaX() <= 0) {
-                    this.posicaoCorrente = this.posicaoInicial;
-                    throw new IllegalStateException("Sonda em estado invalido. Tentativa de acessar um local inacessivel.");
-                }
+                break;
+            case W:
+                validaSondaChegouLimiteAreaExploracao(this.posicaoCorrente.getCoordenadaX() <= 0);
                 this.posicaoCorrente.moverDirecaoOeste();
-            }
-            break;
+                break;
+        }
+    }
+
+    private void validaSondaChegouLimiteAreaExploracao(boolean limiteAtingido) {
+        if (limiteAtingido) {
+            this.posicaoCorrente = this.posicaoInicial;
+            throw new IllegalStateException("Sonda em estado invalido. Tentativa de acessar um local inacessivel.");
         }
     }
 
