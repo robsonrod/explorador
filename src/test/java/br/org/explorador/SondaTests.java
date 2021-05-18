@@ -115,4 +115,18 @@ public class SondaTests {
         Assertions.assertEquals(posicaoEsperadaParaY, sonda.getPosicao().getCoordenadaY());
     }
 
+    @Test
+    public void testSondaNoPontoInicialDirecaoLesteMovendoDuasVezesFrenteSemAlterarDirecao() {
+        Sonda sonda = new Sonda(new Posicao(0, 0, PontoCardeal.E), new Planalto(2, 2));
+        sonda.mover();
+        sonda.mover();
+        Assertions.assertEquals(PontoCardeal.E, sonda.getPosicao().getDirecao());
+
+        int posicaoEsperadaParaX = 2;
+        int posicaoEsperadaParaY = 0;
+
+        Assertions.assertEquals(posicaoEsperadaParaX, sonda.getPosicao().getCoordenadaX());
+        Assertions.assertEquals(posicaoEsperadaParaY, sonda.getPosicao().getCoordenadaY());
+    }
+
 }
