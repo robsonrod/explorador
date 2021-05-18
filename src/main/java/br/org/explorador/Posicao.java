@@ -2,8 +2,8 @@ package br.org.explorador;
 
 public class Posicao {
 
-    private final int coordenadaX;
-    private final int coordenadaY;
+    private int coordenadaX;
+    private int coordenadaY;
     private PontoCardeal pontoCardeal;
 
     public Posicao(int coordenadaX, int coordenadaY, PontoCardeal pontoCardeal) {
@@ -30,5 +30,21 @@ public class Posicao {
             return;
         }
         this.pontoCardeal = this.pontoCardeal.virarEsquerda();
+    }
+
+    public void moverDirecaoNorte() {
+        this.coordenadaY += 1;
+    }
+
+    public void moverDirecaoSul() {
+        this.coordenadaY -= 1;
+    }
+
+    public void moverDirecaoLeste() {
+        this.coordenadaX += 1;
+    }
+
+    public void moverDirecaoOeste() {
+        this.coordenadaX -= 1;
     }
 }

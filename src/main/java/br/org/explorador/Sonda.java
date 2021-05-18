@@ -8,7 +8,7 @@ public class Sonda {
     private String[] comandos;
 
     public Sonda(Posicao posicao, Planalto planalto) {
-        this.posicaoInicial = posicao;
+        this.posicaoInicial = new Posicao(posicao.getCoordenadaX(), posicao.getCoordenadaY(), posicao.getDirecao());
         this.posicaoCorrente = posicao;
         this.planalto = planalto;
     }
@@ -29,29 +29,29 @@ public class Sonda {
                 this.posicaoCorrente = this.posicaoInicial;
                 throw new IllegalStateException("Sonda em estado invalido. Tentativa de acessar um local inacessivel.");
             }
+            this.posicaoCorrente.moverDirecaoNorte();
 
-            this.posicaoCorrente = new Posicao(this.posicaoCorrente.getCoordenadaX(), posicaoCorrente.getCoordenadaY() + 1, this.posicaoCorrente.getDirecao());
         } else if (posicaoCorrente.getDirecao() == PontoCardeal.S) {
             if (this.posicaoCorrente.getCoordenadaY() <= 0) {
                 this.posicaoCorrente = this.posicaoInicial;
                 throw new IllegalStateException("Sonda em estado invalido. Tentativa de acessar um local inacessivel.");
             }
 
-            this.posicaoCorrente = new Posicao(this.posicaoCorrente.getCoordenadaX(), posicaoCorrente.getCoordenadaY() - 1, this.posicaoCorrente.getDirecao());
+            this.posicaoCorrente.moverDirecaoSul();
+
         } else if (posicaoCorrente.getDirecao() == PontoCardeal.E) {
 
             if (this.posicaoCorrente.getCoordenadaX() >= this.planalto.getLargura()) {
                 this.posicaoCorrente = this.posicaoInicial;
                 throw new IllegalStateException("Sonda em estado invalido. Tentativa de acessar um local inacessivel.");
             }
-            this.posicaoCorrente = new Posicao(this.posicaoCorrente.getCoordenadaX() + 1, posicaoCorrente.getCoordenadaY(), this.posicaoCorrente.getDirecao());
+            this.posicaoCorrente.moverDirecaoLeste();
         } else {
             if (this.posicaoCorrente.getCoordenadaX() <= 0) {
                 this.posicaoCorrente = this.posicaoInicial;
                 throw new IllegalStateException("Sonda em estado invalido. Tentativa de acessar um local inacessivel.");
             }
-
-            this.posicaoCorrente = new Posicao(this.posicaoCorrente.getCoordenadaX() - 1, posicaoCorrente.getCoordenadaY(), this.posicaoCorrente.getDirecao());
+            this.posicaoCorrente.moverDirecaoOeste();
         }
     }
 
