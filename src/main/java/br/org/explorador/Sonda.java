@@ -12,14 +12,8 @@ public class Sonda {
         this.planalto = planalto;
     }
 
-    public void girar(String direcaoDoGiro) {
-        boolean direcoesValidas = direcaoDoGiro.equalsIgnoreCase("L") ||
-                direcaoDoGiro.equalsIgnoreCase("R");
-
-        if (!direcoesValidas) {
-            throw new IllegalArgumentException("Direcao invalida, somente L e R sao aceitos como direcao.");
-        }
-
+    public void girar(String direcao) {
+        Direcao direcaoDoGiro = Direcao.converte(direcao);
         this.posicaoCorrente.novaDirecao(direcaoDoGiro);
     }
 

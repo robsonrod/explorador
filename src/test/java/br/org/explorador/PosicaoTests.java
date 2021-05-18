@@ -9,7 +9,7 @@ public class PosicaoTests {
     public void testPosicaoPontoInicialNorteParaDireita() {
         Posicao posicao = new Posicao(0, 0, PontoCardeal.N);
         Assertions.assertEquals(posicao.getDirecao(), PontoCardeal.N);
-        posicao.novaDirecao("R");
+        posicao.novaDirecao(Direcao.R);
         Assertions.assertEquals(PontoCardeal.E, posicao.getDirecao());
     }
 }

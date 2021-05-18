@@ -24,8 +24,8 @@ public class Posicao {
         return pontoCardeal;
     }
 
-    public void novaDirecao(String direcaoDoGiro) {
-        if (direcaoDoGiro.equalsIgnoreCase("R")) {
+    public void novaDirecao(Direcao direcaoDoGiro) {
+        if (direcaoDoGiro == Direcao.R) {
             this.pontoCardeal = this.pontoCardeal.virarDireita();
             return;
         }
