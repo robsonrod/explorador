@@ -136,6 +136,13 @@ public class SondaTests {
         sonda.mover();
         Exception exception = Assertions.assertThrows(IllegalStateException.class, sonda::mover);
         Assertions.assertEquals("Sonda em estado invalido. Tentativa de acessar um local inacessivel.", exception.getMessage());
+
+        int posicaoEsperadaParaX = 0;
+        int posicaoEsperadaParaY = 0;
+
+        Assertions.assertEquals(posicaoEsperadaParaX, sonda.getPosicao().getCoordenadaX());
+        Assertions.assertEquals(posicaoEsperadaParaY, sonda.getPosicao().getCoordenadaY());
+
     }
 
     @Test
@@ -151,4 +158,32 @@ public class SondaTests {
         Assertions.assertEquals(posicaoEsperadaParaY, sonda.getPosicao().getCoordenadaY());
     }
 
+    @Test
+    public void testSondaNoPontoInicialDirecaoOesteMovendoDuasVezesFrenteSemAlterarDirecao() {
+        Sonda sonda = new Sonda(new Posicao(2, 2, PontoCardeal.W), new Planalto(2, 2));
+        sonda.mover();
+        sonda.mover();
+        Assertions.assertEquals(PontoCardeal.W, sonda.getPosicao().getDirecao());
+
+        int posicaoEsperadaParaX = 0;
+        int posicaoEsperadaParaY = 2;
+
+        Assertions.assertEquals(posicaoEsperadaParaX, sonda.getPosicao().getCoordenadaX());
+        Assertions.assertEquals(posicaoEsperadaParaY, sonda.getPosicao().getCoordenadaY());
+    }
+
+    @Test
+    public void testSondaNoPontoInicialDirecaoOesteMovendoFrenteSaindoAreaCoberturaERetornandoAoPontoInicial() {
+        Sonda sonda = new Sonda(new Posicao(2, 2, PontoCardeal.W), new Planalto(2, 2));
+        sonda.mover();
+        sonda.mover();
+        Exception exception = Assertions.assertThrows(IllegalStateException.class, sonda::mover);
+        Assertions.assertEquals("Sonda em estado invalido. Tentativa de acessar um local inacessivel.", exception.getMessage());
+
+        int posicaoEsperadaParaX = 2;
+        int posicaoEsperadaParaY = 2;
+
+        Assertions.assertEquals(posicaoEsperadaParaX, sonda.getPosicao().getCoordenadaX());
+        Assertions.assertEquals(posicaoEsperadaParaY, sonda.getPosicao().getCoordenadaY());
+    }
 }
