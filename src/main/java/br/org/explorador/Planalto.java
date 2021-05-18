@@ -14,4 +14,7 @@ public class Planalto {
         return altura;
     }
 
+    public int getLargura() {
+        return largura;
+    }
 }
