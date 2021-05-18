@@ -190,7 +190,7 @@ public class SondaTests {
     @Test
     public void testSondaExecutandoUmConjuntoDeComandos() {
         Sonda sonda = new Sonda(new Posicao(1, 2, PontoCardeal.N), new Planalto(3, 3));
-        sonda.recebeComandos(new String[] {"L", "M", "L", "M", "L", "M", "L", "M", "M"});
+        sonda.recebeComandos(new String[]{"L", "M", "L", "M", "L", "M", "L", "M", "M"});
         sonda.executaComandos();
 
         int posicaoEsperadaParaX = 1;
