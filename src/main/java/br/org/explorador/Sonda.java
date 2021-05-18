@@ -1,8 +1,5 @@
 package br.org.explorador;
 
-import java.math.BigDecimal;
-import java.math.BigInteger;
-
 public class Sonda {
 
     private final Planalto planalto;
