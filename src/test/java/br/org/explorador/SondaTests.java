@@ -3,8 +3,6 @@ package br.org.explorador;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
-
 public class SondaTests {
 
     @Test
@@ -193,7 +191,7 @@ public class SondaTests {
     public void testSondaExecutandoUmConjuntoDeComandos() {
         Sonda sonda = new Sonda(new Posicao(1, 2, PontoCardeal.N), new Planalto(3, 3));
         sonda.recebeComandos(new String[] {"L", "M", "L", "M", "L", "M", "L", "M", "M"});
-        sonda.executarComandos();
+        sonda.executaComandos();
 
         int posicaoEsperadaParaX = 1;
         int posicaoEsperadaParaY = 3;

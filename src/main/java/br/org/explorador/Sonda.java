@@ -59,7 +59,7 @@ public class Sonda {
         this.comandos = comandos;
     }
 
-    public void executarComandos() {
+    public void executaComandos() {
         for (String comando : this.comandos) {
             if (comando.equalsIgnoreCase("M")) {
                 mover();
