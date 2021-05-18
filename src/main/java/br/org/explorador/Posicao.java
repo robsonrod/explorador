@@ -2,6 +2,8 @@ package br.org.explorador;
 
 public class Posicao {
 
+    private static final int VALOR_DO_DESLOCAMENTO = 1;
+
     private int coordenadaX;
     private int coordenadaY;
     private PontoCardeal pontoCardeal;
@@ -33,18 +35,18 @@ public class Posicao {
     }
 
     public void moverDirecaoNorte() {
-        this.coordenadaY += 1;
+        this.coordenadaY += VALOR_DO_DESLOCAMENTO;
     }
 
     public void moverDirecaoSul() {
-        this.coordenadaY -= 1;
+        this.coordenadaY -= VALOR_DO_DESLOCAMENTO;
     }
 
     public void moverDirecaoLeste() {
-        this.coordenadaX += 1;
+        this.coordenadaX += VALOR_DO_DESLOCAMENTO;
     }
 
     public void moverDirecaoOeste() {
-        this.coordenadaX -= 1;
+        this.coordenadaX -= VALOR_DO_DESLOCAMENTO;
     }
 }
