@@ -42,8 +42,10 @@ public class Sonda {
                 throw new IllegalStateException("Sonda em estado invalido. Tentativa de acessar um local inacessivel.");
             }
             this.posicaoCorrente = new Posicao(this.posicaoCorrente.getCoordenadaX(), posicaoCorrente.getCoordenadaY() - 1, this.posicaoCorrente.getDirecao());
-        } else {
+        } else if (posicaoCorrente.getDirecao() == PontoCardeal.E) {
             this.posicaoCorrente = new Posicao(this.posicaoCorrente.getCoordenadaX() + 1, posicaoCorrente.getCoordenadaY(), this.posicaoCorrente.getDirecao());
+        } else {
+            this.posicaoCorrente = new Posicao(this.posicaoCorrente.getCoordenadaX() - 1, posicaoCorrente.getCoordenadaY(), this.posicaoCorrente.getDirecao());
         }
     }
 }
