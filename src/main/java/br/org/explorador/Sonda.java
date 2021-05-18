@@ -5,6 +5,7 @@ public class Sonda {
     private final Planalto planalto;
     private final Posicao posicaoInicial;
     private Posicao posicaoCorrente;
+    private String[] comandos;
 
     public Sonda(Posicao posicao, Planalto planalto) {
         this.posicaoInicial = posicao;
@@ -51,6 +52,20 @@ public class Sonda {
             }
 
             this.posicaoCorrente = new Posicao(this.posicaoCorrente.getCoordenadaX() - 1, posicaoCorrente.getCoordenadaY(), this.posicaoCorrente.getDirecao());
+        }
+    }
+
+    public void recebeComandos(String[] comandos) {
+        this.comandos = comandos;
+    }
+
+    public void executarComandos() {
+        for (String comando : this.comandos) {
+            if (comando.equalsIgnoreCase("M")) {
+                mover();
+            } else {
+                girar(comando);
+            }
         }
     }
 }
