@@ -49,6 +49,16 @@ A solução foi chamada de Explorador e foi escrita partindo de algumas premissa
 * Um gerenciador de dependências foi utilizado(demorei a aceitar a ideia). Para essa tarefa o maven foi utilizado.
 * Ser simples na elaboração da solução.
 
+### Etapas
+
+As etapas da escrita da solução podem ser descritas em:
+
+- [x] Criar estrutura do projeto.
+- [x] Escrever comportamento direcional (R e L).
+- [x] Escrever comportamento posicional (pontos cardeais).
+- [x] Ler arquivo de entrada
+- [x] Escrever a saída no console
+
 ### Executando
 
 Para executar o Explorador foi criado um arquivo Explorador.java e nele encontra-se o método main, 
