@@ -12,7 +12,7 @@ import java.util.stream.Stream;
 public class Explorador {
 
     private final List<String> linhasArquivo;
-    private List<Sonda> sondas;
+    private final List<Sonda> sondas;
 
     public Explorador(String nomeArquivoEntrada) {
         linhasArquivo = leLinhasArquivo(nomeArquivoEntrada);
@@ -41,12 +41,12 @@ public class Explorador {
         Planalto planalto = new Planalto(alturaPlanalto, larguraPlanalto);
 
         while (iteradorDeLinhas.hasNext()) {
-            String posicaoSonda[] = iteradorDeLinhas.next().split("\\s");
+            String[] posicaoSonda = iteradorDeLinhas.next().split("\\s");
             int coordenadaInicialX = Integer.parseInt(posicaoSonda[0]);
             int coordenadaInicialY = Integer.parseInt(posicaoSonda[1]);
 
             Posicao posicao = new Posicao(coordenadaInicialX, coordenadaInicialY, PontoCardeal.converte(posicaoSonda[2]));
-            String comandos[] = iteradorDeLinhas.next().split("{1}");
+            String[] comandos = iteradorDeLinhas.next().split("(?!^)");
 
             Sonda sonda = new Sonda(posicao, planalto);
             sonda.recebeComandos(comandos);
