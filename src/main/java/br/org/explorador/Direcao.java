@@ -17,7 +17,6 @@ public enum Direcao {
                 return direcao;
             }
         }
-
         throw new IllegalArgumentException("Direcao invalida, somente L e R sao aceitos como direcao.");
     }
 }

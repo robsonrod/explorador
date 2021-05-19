@@ -51,7 +51,18 @@ public enum PontoCardeal {
         this.nome = nome;
     }
 
+    public static PontoCardeal converte(String pontoCardeal) {
+        for (PontoCardeal ponto : PontoCardeal.values()) {
+            if (ponto.name().equalsIgnoreCase(pontoCardeal)) {
+                return ponto;
+            }
+        }
+
+        throw new IllegalArgumentException("Ponto cardeal invalido, somente pontos cardeais em ingles sao aceitos.");
+    }
+
     abstract PontoCardeal virarDireita();
 
     abstract PontoCardeal virarEsquerda();
+
 }

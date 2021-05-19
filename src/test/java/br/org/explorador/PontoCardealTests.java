@@ -28,5 +28,4 @@ public class PontoCardealTests {
         Assertions.assertEquals(PontoCardeal.N, PontoCardeal.W.virarDireita());
         Assertions.assertEquals(PontoCardeal.S, PontoCardeal.W.virarEsquerda());
     }
-
 }

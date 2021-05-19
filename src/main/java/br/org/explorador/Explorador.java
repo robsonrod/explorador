@@ -3,18 +3,20 @@ package br.org.explorador;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-public class UtilArquivo {
+public class Explorador {
 
     private final List<String> linhasArquivo;
+    private List<Sonda> sondas;
 
-    public UtilArquivo(String nomeArquivoEntrada) {
+    public Explorador(String nomeArquivoEntrada) {
         linhasArquivo = leLinhasArquivo(nomeArquivoEntrada);
+        sondas = new ArrayList<>();
     }
 
     private List<String> leLinhasArquivo(String nomeArquivoEntrada) {
@@ -26,14 +28,31 @@ public class UtilArquivo {
         return null;
     }
 
-    public void lePosicaoSonda() {
-        Iterator<String> iterator = linhasArquivo.iterator();
-        Integer[] dimensaoPlanalto = Arrays.stream(iterator.next().split("\\s")).map(Integer::parseInt).toArray(Integer[]::new);
-        System.out.println(dimensaoPlanalto[0]);
-        System.out.println(dimensaoPlanalto[1]);
-        while (iterator.hasNext()) {
-            String posicaoSonda[] = iterator.next().split("\\s");
-            String comandos[] = iterator.next().split("{1}");
+    public List<Sonda> getSondas() {
+        return sondas;
+    }
+
+    public void exploraPlanaltoMarciano() {
+        Iterator<String> iteradorDeLinhas = linhasArquivo.iterator();
+
+        String[] dimensaoPlanalto = iteradorDeLinhas.next().split("\\s");
+        int alturaPlanalto = Integer.parseInt(dimensaoPlanalto[0]);
+        int larguraPlanalto = Integer.parseInt(dimensaoPlanalto[1]);
+        Planalto planalto = new Planalto(alturaPlanalto, larguraPlanalto);
+
+        while (iteradorDeLinhas.hasNext()) {
+            String posicaoSonda[] = iteradorDeLinhas.next().split("\\s");
+            int coordenadaInicialX = Integer.parseInt(posicaoSonda[0]);
+            int coordenadaInicialY = Integer.parseInt(posicaoSonda[1]);
+
+            Posicao posicao = new Posicao(coordenadaInicialX, coordenadaInicialY, PontoCardeal.converte(posicaoSonda[2]));
+            String comandos[] = iteradorDeLinhas.next().split("{1}");
+
+            Sonda sonda = new Sonda(posicao, planalto);
+            sonda.recebeComandos(comandos);
+            sonda.executaComandos();
+
+            sondas.add(sonda);
         }
     }
 }
