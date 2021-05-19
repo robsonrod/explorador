@@ -55,4 +55,13 @@ public class Explorador {
             sondas.add(sonda);
         }
     }
+
+    public static void main(String[] args) {
+        Explorador explorador = new Explorador("src/test/resources/entrada_duas_sondas.txt");
+        explorador.exploraPlanaltoMarciano();
+        List<Sonda> sondas = explorador.getSondas();
+        for (Sonda sonda : sondas) {
+            System.out.printf("%d %d %s\n", sonda.getPosicao().getCoordenadaX(), sonda.getPosicao().getCoordenadaY(), sonda.getPosicao().getDirecao());
+        }
+    }
 }
