@@ -19,6 +19,15 @@ public class Explorador {
         sondas = new ArrayList<>();
     }
 
+    public static void main(String[] args) {
+        Explorador explorador = new Explorador("src/test/resources/entrada_duas_sondas.txt");
+        explorador.exploraPlanaltoMarciano();
+        List<Sonda> sondas = explorador.getSondas();
+        for (Sonda sonda : sondas) {
+            System.out.printf("%d %d %s\n", sonda.getPosicao().getCoordenadaX(), sonda.getPosicao().getCoordenadaY(), sonda.getPosicao().getDirecao());
+        }
+    }
+
     private List<String> leLinhasArquivo(String nomeArquivoEntrada) {
         try (Stream<String> stream = Files.lines(Paths.get(nomeArquivoEntrada))) {
             return stream.map(String::toUpperCase).collect(Collectors.toList());
@@ -53,15 +62,6 @@ public class Explorador {
             sonda.executaComandos();
 
             sondas.add(sonda);
-        }
-    }
-
-    public static void main(String[] args) {
-        Explorador explorador = new Explorador("src/test/resources/entrada_duas_sondas.txt");
-        explorador.exploraPlanaltoMarciano();
-        List<Sonda> sondas = explorador.getSondas();
-        for (Sonda sonda : sondas) {
-            System.out.printf("%d %d %s\n", sonda.getPosicao().getCoordenadaX(), sonda.getPosicao().getCoordenadaY(), sonda.getPosicao().getDirecao());
         }
     }
 }

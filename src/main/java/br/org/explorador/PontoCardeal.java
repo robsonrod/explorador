@@ -57,7 +57,7 @@ public enum PontoCardeal {
                 return ponto;
             }
         }
-        throw new IllegalArgumentException("Ponto cardeal invalido, somente pontos cardeais em ingles sao aceitos.");
+        throw new IllegalArgumentException("Ponto cardeal inválido. Somente pontos cardeais em inglês são aceitos.");
     }
 
     abstract PontoCardeal virarDireita();

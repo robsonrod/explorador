@@ -47,7 +47,7 @@ public class Sonda {
     private void validaSondaChegouLimiteAreaExploracao(boolean limiteAtingido) {
         if (limiteAtingido) {
             this.posicaoCorrente = this.posicaoInicial;
-            throw new IllegalStateException("Sonda em estado invalido. Tentativa de acessar um local inacessivel.");
+            throw new IllegalStateException("Sonda em estado inválido. Tentativa de acessar um local inacessível.");
         }
     }
 

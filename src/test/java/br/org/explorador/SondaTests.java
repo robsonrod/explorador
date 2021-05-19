@@ -23,7 +23,7 @@ public class SondaTests {
     public void testSondaNoPontoInicialInformandoDirecaoGiroErrada() {
         Sonda sonda = new Sonda(new Posicao(0, 0, PontoCardeal.N), new Planalto(2, 2));
         Exception exception = Assertions.assertThrows(IllegalArgumentException.class, () -> sonda.girar("D"));
-        Assertions.assertEquals("Direcao invalida, somente L e R sao aceitos como direcao.", exception.getMessage());
+        Assertions.assertEquals("Direção inválida. Somente L e R sao aceitos como direção.", exception.getMessage());
     }
 
     @Test
@@ -59,7 +59,7 @@ public class SondaTests {
         sonda.mover();
         sonda.mover();
         Exception exception = Assertions.assertThrows(IllegalStateException.class, sonda::mover);
-        Assertions.assertEquals("Sonda em estado invalido. Tentativa de acessar um local inacessivel.", exception.getMessage());
+        Assertions.assertEquals("Sonda em estado inválido. Tentativa de acessar um local inacessível.", exception.getMessage());
         Assertions.assertEquals(0, sonda.getPosicao().getCoordenadaX());
         Assertions.assertEquals(0, sonda.getPosicao().getCoordenadaY());
     }
@@ -97,7 +97,7 @@ public class SondaTests {
         sonda.mover();
         sonda.mover();
         Exception exception = Assertions.assertThrows(IllegalStateException.class, sonda::mover);
-        Assertions.assertEquals("Sonda em estado invalido. Tentativa de acessar um local inacessivel.", exception.getMessage());
+        Assertions.assertEquals("Sonda em estado inválido. Tentativa de acessar um local inacessível.", exception.getMessage());
         Assertions.assertEquals(2, sonda.getPosicao().getCoordenadaX());
         Assertions.assertEquals(2, sonda.getPosicao().getCoordenadaY());
     }
@@ -135,7 +135,7 @@ public class SondaTests {
         sonda.mover();
         sonda.mover();
         Exception exception = Assertions.assertThrows(IllegalStateException.class, sonda::mover);
-        Assertions.assertEquals("Sonda em estado invalido. Tentativa de acessar um local inacessivel.", exception.getMessage());
+        Assertions.assertEquals("Sonda em estado inválido. Tentativa de acessar um local inacessível.", exception.getMessage());
 
         int posicaoEsperadaParaX = 0;
         int posicaoEsperadaParaY = 0;
@@ -178,7 +178,7 @@ public class SondaTests {
         sonda.mover();
         sonda.mover();
         Exception exception = Assertions.assertThrows(IllegalStateException.class, sonda::mover);
-        Assertions.assertEquals("Sonda em estado invalido. Tentativa de acessar um local inacessivel.", exception.getMessage());
+        Assertions.assertEquals("Sonda em estado inválido. Tentativa de acessar um local inacessível.", exception.getMessage());
 
         int posicaoEsperadaParaX = 2;
         int posicaoEsperadaParaY = 2;

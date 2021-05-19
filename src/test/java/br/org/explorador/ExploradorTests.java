@@ -9,7 +9,7 @@ public class ExploradorTests {
     public void testExploradorComUmaSondaPontoCardealErrado() {
         Explorador explorador = new Explorador("src/test/resources/entrada_sonda_invalida.txt");
         Exception exception = Assertions.assertThrows(IllegalArgumentException.class, explorador::exploraPlanaltoMarciano);
-        Assertions.assertEquals("Ponto cardeal invalido, somente pontos cardeais em ingles sao aceitos.", exception.getMessage());
+        Assertions.assertEquals("Ponto cardeal inválido. Somente pontos cardeais em inglês são aceitos.", exception.getMessage());
     }
 
     @Test
