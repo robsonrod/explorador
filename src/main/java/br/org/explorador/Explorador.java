@@ -36,8 +36,8 @@ public class Explorador {
         Iterator<String> iteradorDeLinhas = linhasArquivo.iterator();
 
         String[] dimensaoPlanalto = iteradorDeLinhas.next().split("\\s");
-        int alturaPlanalto = Integer.parseInt(dimensaoPlanalto[0]);
-        int larguraPlanalto = Integer.parseInt(dimensaoPlanalto[1]);
+        int larguraPlanalto = Integer.parseInt(dimensaoPlanalto[0]);
+        int alturaPlanalto = Integer.parseInt(dimensaoPlanalto[1]);
         Planalto planalto = new Planalto(alturaPlanalto, larguraPlanalto);
 
         while (iteradorDeLinhas.hasNext()) {
