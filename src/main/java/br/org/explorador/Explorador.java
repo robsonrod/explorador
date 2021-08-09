@@ -20,11 +20,16 @@ public class Explorador {
     }
 
     public static void main(String[] args) {
-        Explorador explorador = new Explorador("src/test/resources/entrada_duas_sondas.txt");
+        Explorador explorador = new Explorador("src/test/resources/entrada_uma_sonda_fixa_bandeira.txt");
         explorador.exploraPlanaltoMarciano();
         List<Sonda> sondas = explorador.getSondas();
         for (Sonda sonda : sondas) {
             System.out.printf("%d %d %s\n", sonda.getPosicao().getCoordenadaX(), sonda.getPosicao().getCoordenadaY(), sonda.getPosicao().getDirecao());
+            if (!sonda.getPosicoesComBandeira().isEmpty()) {
+                for (Posicao posicaoComBandeira : sonda.getPosicoesComBandeira()) {
+                    System.out.printf("Bandeiras em: %d %d %s\n", posicaoComBandeira.getCoordenadaX(), posicaoComBandeira.getCoordenadaY(), posicaoComBandeira.getDirecao());
+                }
+            }
         }
     }
 

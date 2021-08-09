@@ -1,16 +1,21 @@
 package br.org.explorador;
 
+import java.util.ArrayList;
+import  java.util.List;
+
 public class Sonda {
 
     private final Planalto planalto;
     private final Posicao posicaoInicial;
     private Posicao posicaoCorrente;
     private String[] comandos;
+    private List<Posicao> posicoesComBandeira;
 
     public Sonda(Posicao posicao, Planalto planalto) {
         this.posicaoInicial = new Posicao(posicao.getCoordenadaX(), posicao.getCoordenadaY(), posicao.getDirecao());
         this.posicaoCorrente = posicao;
         this.planalto = planalto;
+        this.posicoesComBandeira = new ArrayList<>();
     }
 
     public void girar(String direcao) {
@@ -59,9 +64,20 @@ public class Sonda {
         for (String comando : this.comandos) {
             if (comando.equalsIgnoreCase("M")) {
                 mover();
+            } else if (comando.equalsIgnoreCase("F")) {
+                fixarBandeira();
             } else {
                 girar(comando);
+
             }
         }
+    }
+
+    public void fixarBandeira() {
+        this.posicoesComBandeira.add(new Posicao(this.getPosicao().getCoordenadaX(), this.getPosicao().getCoordenadaY(), this.getPosicao().getDirecao()));
+    }
+
+    public List<Posicao> getPosicoesComBandeira() {
+        return this.posicoesComBandeira;
     }
 }

@@ -1,5 +1,6 @@
 package br.org.explorador;
 
+import org.junit.Assert;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -200,4 +201,39 @@ public class SondaTests {
         Assertions.assertEquals(posicaoEsperadaParaY, sonda.getPosicao().getCoordenadaY());
         Assertions.assertEquals(PontoCardeal.N, sonda.getPosicao().getDirecao());
     }
+
+    @Test
+    public void testSondaExecutandoUmConjuntoDeComandosComFixacaoBandeira() {
+        Sonda sonda = new Sonda(new Posicao(1, 2, PontoCardeal.N), new Planalto(3, 3));
+        sonda.recebeComandos(new String[]{"L", "M", "L", "M", "L", "M", "L", "F", "M", "M"});
+        sonda.executaComandos();
+
+        int posicaoEsperadaParaX = 1;
+        int posicaoEsperadaParaY = 3;
+
+        Assertions.assertEquals(posicaoEsperadaParaX, sonda.getPosicao().getCoordenadaX());
+        Assertions.assertEquals(posicaoEsperadaParaY, sonda.getPosicao().getCoordenadaY());
+        Assertions.assertEquals(PontoCardeal.N, sonda.getPosicao().getDirecao());
+    }
+
+    @Test
+    public void testIncluirComandoParaFixarBandeira() {
+        Sonda sonda = new Sonda(new Posicao(0, 0, PontoCardeal.N), new Planalto(5, 5));
+        sonda.fixarBandeira();
+
+        int posicaoEsperadaX = 0;
+        int posicaoEsperadaY = 0;
+
+        Assertions.assertEquals(posicaoEsperadaX, sonda.getPosicao().getCoordenadaX());
+        Assertions.assertEquals(posicaoEsperadaY, sonda.getPosicao().getCoordenadaY());
+
+        Assertions.assertEquals(sonda.getPosicoesComBandeira().size(), 1);
+        Posicao posicaoComBandeira = sonda.getPosicoesComBandeira().get(0);
+
+        int posicaoEsparadaXComBandeira = 0;
+        int posicaoEsparadaYComBandeira = 0;
+        Assertions.assertEquals(posicaoEsparadaXComBandeira, posicaoComBandeira.getCoordenadaX());
+        Assertions.assertEquals(posicaoEsparadaYComBandeira, posicaoComBandeira.getCoordenadaY());
+    }
+
 }
