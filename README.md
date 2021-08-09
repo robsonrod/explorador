@@ -23,12 +23,12 @@ LMLMLMLMM
 
 A primeira linha da entrada de dados é a coordenada do ponto superior-direito da malha do planalto. Lembrando que a inferior esquerda sempre será (0,0).\
 O resto da entrada será informação das sondas que foram implantadas. Cada sonda é representada por duas linhas.\
-A primeira indica sua posição inicial e a segunda uma série de instruções indicando para a sonda como ela deverá explorar o planalto.\
-A posição é representada por dois inteiros e uma letra separados por espaços, correspondendo à coordenada X-Y e à direção da sonda. Cada sonda será controlada 
+A primeira indicará a sua posição inicial e a segunda uma série de instruções indicando para a sonda como ela deverá explorar o planalto.\
+A posição é representada por dois inteiros e uma letra separados por espaços, correspondendo à coordenada X-Y e à direção da sonda. Cada sonda será controlada. 
 
 ### Saída
 
-A saída deverá contar uma linha para cada sonda, na mesma ordem de entrada, indicando sua coordenada final e direção.
+A saída deverá contar uma linha para cada sonda, na mesma ordem de entrada, indicando a sua coordenada final e direção.
 
 1 3 N
 
@@ -41,13 +41,13 @@ A solução foi chamada de Explorador e foi escrita partindo de algumas premissa
 * Mesmo que, as instruções da sonda sejam em inglês o código será escrito em PT-BR.
 * TDD será prática obrigatória.
 * Existem limites da área a ser explorada. 
-* A entrada será em arquivo, pois fica mais simples a preparação de entradas mais completas e complexas
+* A entrada será em arquivo, pois fica mais simples a preparação de entradas mais completas.
 * A saída será no terminal por simplicidade.
 * Execução dos testes unitários deverá ser rápida. 
 
 ### Considerações
 
-* A linguagem selecionada foi a java. Devido ser mais familiarizado a ela.
+* A linguagem selecionada foi a java.
 * Um gerenciador de dependências foi utilizado(demorei a aceitar a ideia). Para essa tarefa o maven foi utilizado.
 * Ser simples na elaboração da solução.
 
@@ -60,6 +60,25 @@ As etapas da escrita da solução podem ser descritas em:
 - [x] Escrever comportamento posicional (pontos cardeais).
 - [x] Ler arquivo de entrada
 - [x] Escrever a saída no console
+  
+### Etapa adicional
+- [x] Escrever comportamento que marca uma coordenada com uma bandeira(ponto de interesse).
+- [x] Escrever a saída no console
+
+#### Entrada
+A entrada deverá ser feita em arquivo e no formato descrito abaixo:
+
+5 5\
+1 2 N\
+LMFLMLMLMM
+
+#### Saida
+A saída deverá contar uma linha para cada sonda, na mesma ordem de entrada, indicando a sua coordenada final e direção.
+Bem como a lista de pontos marcados com as bandeiras.
+
+1 3 N
+Bandeiras em: 0 2 W
+
 
 ### Executando
 
